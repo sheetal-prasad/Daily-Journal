@@ -17,9 +17,23 @@ app.use(express.static("public"));
 
 app.get("/",function(req,res){
   res.render("home",{hometext : homeStartingContent});
-
 });
 
+app.get("/about",function(req,res){
+  res.render("about",{abouttext : aboutContent});
+});
+
+app.get("/contact",function(req,res){
+  res.render("contact",{contacttext : contactContent});
+});
+app.get("/compose",function(req,res){
+  res.render("compose");
+});
+
+app.post("/compose",function(req,res){
+  const post = { title: req.body.postTitle , body : req.body.postBody};
+  console.log(post);
+})
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
